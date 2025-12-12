@@ -79,14 +79,33 @@ export default function DashboardNavbar() {
   };
 
   return (
-    <nav className="flex overflow-scroll md:overflow-hidden text-nowrap md:grid gap-4 text-sm text-muted-foreground">
-      {links[determineLinkType()].map((link) => (
-        <Button asChild variant='outline' size='sm' key={link.href} className="w-1/2">
-          <Link href={`/dashboard/${params.siteId}${link.href}`} className={pathname === `/dashboard/${params.siteId}${link.href}` ? "font-semibold text-primary" : ""}>
-            {link.name}
-          </Link>
-        </Button>
-      ))}
+    <nav className="flex overflow-x-auto md:overflow-hidden text-nowrap md:grid gap-3 text-sm no-scrollbar">
+      {links[determineLinkType()].map((link, index) => {
+        const isActive = pathname === `/dashboard/${params.siteId}${link.href}`;
+        return (
+          <Button 
+            asChild 
+            variant={isActive ? 'default' : 'ghost'} 
+            size='sm' 
+            key={link.href} 
+            className={`
+              min-w-fit justify-start transition-all duration-200 rounded-xl
+              ${isActive 
+                ? 'bg-primary text-primary-foreground shadow-soft' 
+                : 'hover:bg-accent/50 text-muted-foreground hover:text-foreground'
+              }
+            `}
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <Link 
+              href={`/dashboard/${params.siteId}${link.href}`} 
+              className="w-full animate-slide-up"
+            >
+              {link.name}
+            </Link>
+          </Button>
+        );
+      })}
     </nav>
   );
 }

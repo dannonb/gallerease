@@ -7,10 +7,12 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="w-full h-screen flex flex-col">
+    <div className="w-full min-h-screen flex flex-col bg-gradient-to-br from-background via-background to-muted/20">
       <Analytics />
       <Header />
-      {children}
+      <div className="flex-1">
+        {children}
+      </div>
     </div>
   );
 }

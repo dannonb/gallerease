@@ -45,18 +45,22 @@ export function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full max-w-2xl space-y-8">
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
+            <FormItem className="animate-slide-up">
+              <FormLabel className="text-base font-medium">Email Address</FormLabel>
               <FormControl>
-                <Input  {...field} />
+                <Input 
+                  {...field} 
+                  placeholder="your@email.com"
+                  type="email"
+                />
               </FormControl>
-              <FormDescription>
-                Your email address
+              <FormDescription className="text-muted-foreground">
+                We'll use this to get back to you
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -66,13 +70,16 @@ export function ContactForm() {
           control={form.control}
           name="subject"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Subject</FormLabel>
+            <FormItem className="animate-slide-up" style={{ animationDelay: '0.1s' }}>
+              <FormLabel className="text-base font-medium">Subject</FormLabel>
               <FormControl>
-                <Input  {...field} />
+                <Input 
+                  {...field} 
+                  placeholder="What's this about?"
+                />
               </FormControl>
-              <FormDescription>
-                The subject of your message
+              <FormDescription className="text-muted-foreground">
+                A brief summary of your inquiry
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -82,19 +89,40 @@ export function ContactForm() {
           control={form.control}
           name="message"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Message</FormLabel>
+            <FormItem className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <FormLabel className="text-base font-medium">Message</FormLabel>
               <FormControl>
-                <Textarea {...field} />
+                <Textarea 
+                  {...field} 
+                  placeholder="Tell us more about what you need help with..."
+                  className="min-h-[150px]"
+                />
               </FormControl>
-              <FormDescription>
-                The message you would like to send us
+              <FormDescription className="text-muted-foreground">
+                Please provide as much detail as possible
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <div className="animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <Button 
+            type="submit" 
+            size="lg" 
+            variant="gradient"
+            className="w-full shadow-glow"
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting ? (
+              <>
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                Sending...
+              </>
+            ) : (
+              "Send Message"
+            )}
+          </Button>
+        </div>
       </form>
     </Form>
   )

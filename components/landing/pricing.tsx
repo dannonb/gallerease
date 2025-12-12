@@ -1,9 +1,8 @@
 // import { getCheckoutSession, getUserTier } from "@/actions/payments";
 import { auth } from "@/auth";
-
-
 import { tierData } from '@/lib/constants'
 import { Button } from "../ui/button";
+import { Check, Star, Zap, Users } from "lucide-react";
 
 export default async function Pricing() {
   const session = await auth();
@@ -16,56 +15,131 @@ export default async function Pricing() {
   //   return `/payments/checkout?id=${priceId}`
   // };
 
+  const getPlanIcon = (label: string) => {
+    switch (label) {
+      case "Starter":
+        return <Star className="w-6 h-6" />;
+      case "Basic":
+        return <Zap className="w-6 h-6" />;
+      case "Company":
+        return <Users className="w-6 h-6" />;
+      default:
+        return <Star className="w-6 h-6" />;
+    }
+  };
+
+  const getPlanGradient = (label: string) => {
+    switch (label) {
+      case "Starter":
+        return "from-slate-500 to-slate-700";
+      case "Basic":
+        return "from-indigo-500 to-purple-600";
+      case "Company":
+        return "from-purple-600 to-pink-600";
+      default:
+        return "from-indigo-500 to-purple-600";
+    }
+  };
+
   return (
-    <section>
-      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-            Designed for business teams like yours
-          </h2>
-          <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            Here at Gallerease we focus on markets where technology, innovation,
-            and capital can unlock long-term value and drive economic growth.
+    <section className="min-h-screen bg-gradient-to-br from-background via-background to-muted/10">
+      <div className="py-16 px-6 mx-auto max-w-7xl lg:py-24">
+        {/* Hero Section */}
+        <div className="mx-auto max-w-4xl text-center mb-16 lg:mb-20 animate-fade-in">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+            💎 Simple Pricing
+          </div>
+          <h1 className="mb-6 text-5xl lg:text-6xl tracking-tight font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+            Designed for teams like yours
+          </h1>
+          <p className="mb-8 text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            Choose the perfect plan for your needs. Start free and scale as you grow. All plans include our core features with no hidden fees.
           </p>
         </div>
-        <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
-          {tierData.map((tier) => (
-            <div key={tier.priceId} className="flex flex-col p-6 mx-auto max-w-lg text-center rounded-lg border shadow xl:p-8">
-            <h3 className="mb-4 text-2xl font-semibold">{tier.label}</h3>
-            <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-              {tier.description}
-            </p>
-            <div className="flex justify-center items-baseline my-8">
-              <span className="mr-2 text-5xl font-extrabold">{tier.price}</span>
-            </div>
 
-            <ul role="list" className="mb-8 space-y-4 text-left">
-              {tier.features.map((feature) => (
-                <li key={feature} className="flex items-center space-x-3">
-                <svg
-                  className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+        {/* Pricing Cards */}
+        <div className="grid gap-8 lg:grid-cols-3 max-w-6xl mx-auto">
+          {tierData.map((tier, index) => {
+            const isPopular = tier.label === "Basic";
+            return (
+              <div 
+                key={tier.priceId || tier.label} 
+                className={`
+                  relative group rounded-3xl border bg-card/50 backdrop-blur-sm p-8 shadow-soft hover:shadow-glow transition-all duration-300 hover:scale-105 animate-slide-up
+                  ${isPopular ? 'ring-2 ring-primary/20 shadow-glow' : ''}
+                `}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Popular Badge */}
+                {isPopular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-glow">
+                      Most Popular
+                    </div>
+                  </div>
+                )}
+
+                {/* Plan Header */}
+                <div className="text-center mb-8">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${getPlanGradient(tier.label)} text-white mb-4 shadow-glow`}>
+                    {getPlanIcon(tier.label)}
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2">{tier.label}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {tier.description}
+                  </p>
+                </div>
+
+                {/* Price */}
+                <div className="text-center mb-8">
+                  <div className="flex items-baseline justify-center mb-2">
+                    <span className="text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
+                      {tier.price}
+                    </span>
+                    {tier.price !== "Free" && (
+                      <span className="text-muted-foreground ml-2">/month</span>
+                    )}
+                  </div>
+                  {tier.price === "Free" && (
+                    <p className="text-sm text-muted-foreground">Forever free</p>
+                  )}
+                </div>
+
+                {/* Features */}
+                <ul className="space-y-4 mb-8">
+                  {tier.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start space-x-3">
+                      <div className="flex-shrink-0 w-5 h-5 bg-green-500/20 rounded-full flex items-center justify-center mt-0.5">
+                        <Check className="w-3 h-3 text-green-600" />
+                      </div>
+                      <span className="text-muted-foreground leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA Button */}
+                <Button
+                  disabled={true}
+                  variant={isPopular ? "gradient" : "outline"}
+                  size="lg"
+                  className="w-full"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-                <span>{feature}</span>
-              </li>
-              ))}
-            </ul>
-            <Button
-              disabled={true}
-              className="focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900"
-            >
-              {tier.label !== "Starter" ? "Coming soon..." : "Current plan"}
-            </Button>
-          </div>
-          ))}
+                  {tier.label !== "Starter" ? "Coming Soon" : "Current Plan"}
+                </Button>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-20 text-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
+          <h3 className="text-2xl font-bold mb-4">Questions?</h3>
+          <p className="text-muted-foreground mb-6">
+            Need help choosing the right plan? We're here to help.
+          </p>
+          <Button variant="outline" size="lg">
+            Contact Sales
+          </Button>
         </div>
       </div>
     </section>

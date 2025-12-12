@@ -78,45 +78,52 @@ export default function Navbar({ isLoggedIn }: NavbarProps) {
 
   return (
     <div className="w-full">
-      <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+      <nav className="hidden flex-col gap-8 text-lg font-medium md:flex md:flex-row md:items-center md:gap-6 md:text-sm lg:gap-8">
         <Link
           href="/"
-          className="flex items-center gap-2 text-lg font-semibold md:text-base transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200"
+          className="flex items-center text-lg font-semibold md:text-base transition-all duration-300 hover:scale-105 group"
         >
-          <Image src="/logo.png" alt="logo" height={70} width={70} />
-          <span className="sr-only">Gallerease</span>
+          <span className="font-bold text-xl bg-gradient-to-r from-slate-900 to-indigo-900 dark:from-slate-100 dark:to-indigo-100 text-transparent bg-clip-text">
+            Gallerease
+          </span>
         </Link>
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={cn(
-              pathname === link.href
-                ? "text-muted-foreground "
-                : "text-foreground",
-              "transition-colors hover:text-foreground"
-            )}
-          >
-            {link.name}
-          </Link>
-        ))}
+        <div className="flex items-center gap-6 lg:gap-8">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "relative px-3 py-2 rounded-lg transition-all duration-200 hover:bg-accent/50",
+                pathname === link.href
+                  ? "text-primary font-medium bg-accent/30"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {link.name}
+              {pathname === link.href && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+              )}
+            </Link>
+          ))}
+        </div>
       </nav>
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="shrink-0 md:hidden">
+          <Button variant="outline" size="icon" className="shrink-0 md:hidden rounded-xl">
             <Menu className="h-5 w-5" />
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="z-[999]">
-          <nav className="grid gap-6 text-lg font-medium">
+        <SheetContent side="left" className="z-[999] w-80">
+          <nav className="grid gap-8 text-lg font-medium pt-8">
             <SheetClose asChild>
               <Link
                 href="/"
-                className="flex items-center gap-2 text-lg font-semibold"
+                className="flex items-center text-lg font-semibold pb-4 border-b"
               >
-                <Image src="/logo.png" alt="logo" height={70} width={70} />
-                <span className="sr-only">Gallerease</span>
+                <span className="font-bold text-xl bg-gradient-to-r from-slate-900 to-indigo-900 dark:from-slate-100 dark:to-indigo-100 text-transparent bg-clip-text">
+                  Gallerease
+                </span>
               </Link>
             </SheetClose>
             {links.map((link) => (
@@ -124,7 +131,10 @@ export default function Navbar({ isLoggedIn }: NavbarProps) {
                 <Link
                   href={link.href}
                   className={cn(
-                    "text-muted-foreground transition-colors hover:text-foreground"
+                    "px-4 py-3 rounded-xl transition-all duration-200 hover:bg-accent",
+                    pathname === link.href
+                      ? "text-primary font-medium bg-accent"
+                      : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   {link.name}

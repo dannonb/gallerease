@@ -10,17 +10,30 @@ export default function UploadPage() {
   const tempUpload = useTempUploadModal();
 
   const title = "Add images";
-  const description = "Add new images to your collection";
+  const description = "Add new images to your collection and organize them beautifully";
+  
   return (
-    <div className="flex flex-col space-y-4">
-      <div className="flex items-center justify-between">
-        <Heading title={title} description={description} />
-        <Button className="bg-[#4caf50] text-white" onClick={() => tempUpload.onOpen()}>
-          Temp Link
-        </Button>
+    <div className="flex flex-col space-y-8 animate-fade-in">
+      <div className="flex items-start justify-between">
+        <div className="animate-slide-up">
+          <Heading title={title} description={description} />
+        </div>
+        <div className="animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <Button 
+            variant="gradient" 
+            onClick={() => tempUpload.onOpen()}
+            className="shadow-glow"
+          >
+            Create Temp Link
+          </Button>
+        </div>
       </div>
-      <Separator />
-      <UploadForm />
+      
+      <Separator className="bg-gradient-to-r from-transparent via-border to-transparent" />
+      
+      <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
+        <UploadForm />
+      </div>
     </div>
   );
 }

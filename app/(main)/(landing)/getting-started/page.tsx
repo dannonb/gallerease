@@ -3,6 +3,8 @@ import React from "react";
 
 export default function GettingStartedPage() {
   return (
-    <GettingStarted />
+    <div className="flex-1">
+      <GettingStarted />
+    </div>
   );
 }
