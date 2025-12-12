@@ -7,10 +7,10 @@ export default function GettingStarted() {
                     <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
                         🚀 Getting Started Guide
                     </div>
-                    <h1 className="mb-6 text-5xl lg:text-6xl tracking-tight font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                    <h1 className="mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
                         Welcome to Gallerease!
                     </h1>
-                    <p className="mb-8 text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                    <p className="mb-8 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
                         Manage and integrate image galleries with ease. Our platform simplifies gallery management for developers working on client websites. Follow these steps to get started.
                     </p>
                 </div>
@@ -153,17 +153,17 @@ interface StepCardProps {
 function StepCard({ stepNumber, title, children, delay = "0s" }: StepCardProps) {
     return (
         <div 
-            className="group relative rounded-3xl border bg-card/50 backdrop-blur-sm p-8 shadow-soft hover:shadow-glow transition-all duration-300 hover:scale-[1.02] animate-slide-up"
+            className="group relative rounded-3xl border bg-card/50 backdrop-blur-sm p-4 sm:p-6 lg:p-8 shadow-soft hover:shadow-glow transition-all duration-300 hover:scale-[1.02] animate-slide-up"
             style={{ animationDelay: delay }}
         >
             {/* Step Number */}
-            <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-glow">
+            <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-glow">
                 {stepNumber}
             </div>
             
             {/* Content */}
-            <div className="ml-4">
-                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
+            <div className="ml-2 sm:ml-4">
+                <h3 className="text-xl sm:text-2xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
                     {title}
                 </h3>
                 <div className="space-y-2">
@@ -177,7 +177,7 @@ function StepCard({ stepNumber, title, children, delay = "0s" }: StepCardProps) 
 function CodeBlock({ children }: { children: string }) {
     return (
         <div className="relative group">
-            <pre className="bg-card border rounded-2xl p-6 overflow-x-auto text-sm leading-relaxed shadow-soft">
+            <pre className="bg-card border rounded-2xl p-3 sm:p-4 lg:p-6 overflow-x-auto text-xs sm:text-sm leading-relaxed shadow-soft">
                 <code className="text-foreground/90 font-mono">
                     {children}
                 </code>

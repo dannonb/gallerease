@@ -11,8 +11,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { signOut } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import { useSiteParams } from "@/hooks/use-site-params";
 
-import { CircleUser } from "lucide-react";
+import { CircleUser, Settings, HelpCircle, LogOut } from "lucide-react";
 
 const handleSignout = async () => {
     signOut({
@@ -21,6 +23,22 @@ const handleSignout = async () => {
 }
 
 export default function UserDropdown() {
+    const router = useRouter();
+    const { lastActiveSite } = useSiteParams();
+
+    const handleSettingsClick = () => {
+        router.push('/profile');
+    };
+
+    const handleSupportClick = () => {
+        if (lastActiveSite) {
+            router.push(`/dashboard/${lastActiveSite}/settings/support`);
+        } else {
+            // Fallback to general support page if no active site
+            router.push('/contact');
+        }
+    };
+
     return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -32,10 +50,19 @@ export default function UserDropdown() {
           <DropdownMenuContent align="end" className="z-[999]">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleSettingsClick} className="cursor-pointer">
+              <Settings className="w-4 h-4 mr-2" />
+              Profile Settings
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={handleSupportClick} className="cursor-pointer">
+              <HelpCircle className="w-4 h-4 mr-2" />
+              Support
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleSignout}>Logout</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleSignout} className="cursor-pointer">
+              <LogOut className="w-4 h-4 mr-2" />
+              Logout
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
     )

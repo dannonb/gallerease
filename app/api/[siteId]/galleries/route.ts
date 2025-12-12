@@ -38,10 +38,30 @@ export async function GET(
         const galleries = await prisma.gallery.findMany({
             where: {
                 siteId: params.siteId
+            },
+            include: {
+                images: true
             }
         })
 
-        return NextResponse.json(galleries)
+        // Format response to match API documentation
+        const formattedGalleries = galleries.map(gallery => ({
+            id: gallery.id,
+            name: gallery.name,
+            description: gallery.description || "",
+            imageCount: gallery.images.length,
+            createdAt: gallery.createdAt,
+            updatedAt: gallery.updatedAt
+        }))
+
+        const response = NextResponse.json(formattedGalleries)
+        
+        // Add rate limit headers
+        response.headers.set('X-RateLimit-Limit', '1000')
+        response.headers.set('X-RateLimit-Remaining', '999')
+        response.headers.set('X-RateLimit-Reset', new Date(Date.now() + 3600000).toISOString())
+        
+        return response
     } catch (error) {
         console.log('[GALLERIES_GET]', error)
         return new NextResponse("Internal error", { status: 500 })

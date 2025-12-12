@@ -43,28 +43,28 @@ export default function HowItWorks() {
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
             🚀 Simple Process
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             How Gallerease Works
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Get up and running in minutes with our streamlined workflow designed for developers.
           </p>
         </div>
 
         {/* Steps */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16">
           <div className="space-y-8">
             {steps.map((step, index) => (
               <div 
                 key={step.number}
-                className="flex items-start space-x-6 animate-slide-up"
+                className="flex items-start space-x-4 sm:space-x-6 animate-slide-up"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Step Number & Icon */}
                 <div className="flex-shrink-0">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${step.color} rounded-2xl flex items-center justify-center text-white shadow-glow relative`}>
-                    <step.icon className="w-8 h-8" />
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-background border-2 border-primary rounded-full flex items-center justify-center text-xs font-bold text-primary">
+                  <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${step.color} rounded-2xl flex items-center justify-center text-white shadow-glow relative`}>
+                    <step.icon className="w-6 h-6 sm:w-8 sm:h-8" />
+                    <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 bg-background border-2 border-primary rounded-full flex items-center justify-center text-xs font-bold text-primary">
                       {step.number}
                     </div>
                   </div>
@@ -72,7 +72,7 @@ export default function HowItWorks() {
 
                 {/* Content */}
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-3">{step.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">
                     {step.description}
                   </p>

@@ -49,23 +49,23 @@ export default async function Pricing() {
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
             💎 Simple Pricing
           </div>
-          <h1 className="mb-6 text-5xl lg:text-6xl tracking-tight font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h1 className="mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             Designed for teams like yours
           </h1>
-          <p className="mb-8 text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+          <p className="mb-8 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
             Choose the perfect plan for your needs. Start free and scale as you grow. All plans include our core features with no hidden fees.
           </p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid gap-8 lg:grid-cols-3 max-w-6xl mx-auto">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {tierData.map((tier, index) => {
             const isPopular = tier.label === "Basic";
             return (
               <div 
                 key={tier.priceId || tier.label} 
                 className={`
-                  relative group rounded-3xl border bg-card/50 backdrop-blur-sm p-8 shadow-soft hover:shadow-glow transition-all duration-300 hover:scale-105 animate-slide-up
+                  relative group rounded-3xl border bg-card/50 backdrop-blur-sm p-4 sm:p-6 lg:p-8 shadow-soft hover:shadow-glow transition-all duration-300 hover:scale-105 animate-slide-up
                   ${isPopular ? 'ring-2 ring-primary/20 shadow-glow' : ''}
                 `}
                 style={{ animationDelay: `${index * 0.1}s` }}

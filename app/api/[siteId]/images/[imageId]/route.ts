@@ -4,7 +4,7 @@ import { authorizeApiKey } from "@/actions/api-keys"
 
 export async function GET(
     req: Request,
-    { params }: { params: { siteId: string } }
+    { params }: { params: { siteId: string; imageId: string } }
 ) {
     const headers = req.headers
     const apiKey = headers.get("x-api-key")
@@ -13,12 +13,13 @@ export async function GET(
         return new NextResponse("Unauthorized", { status: 401 })
     }
 
-     
-
     try {
-        
         if (!params.siteId) {
             return new NextResponse("Site id is required", { status: 400 })
+        }
+
+        if (!params.imageId) {
+            return new NextResponse("Image id is required", { status: 400 })
         }
 
         const site = await prisma.site.findFirst({
@@ -37,8 +38,9 @@ export async function GET(
             return new NextResponse("Forbidden", { status: 403 })
         }
 
-        const images = await prisma.image.findMany({
+        const image = await prisma.image.findFirst({
             where: {
+                id: params.imageId,
                 siteId: params.siteId
             },
             include: {
@@ -46,8 +48,12 @@ export async function GET(
             }
         })
 
+        if (!image) {
+            return new NextResponse("Image not found", { status: 404 })
+        }
+
         // Format response to match API documentation
-        const formattedImages = images.map(image => ({
+        const response = {
             id: image.id,
             originalUrl: image.originalUrl,
             cdnUrl: image.cdnUrl,
@@ -60,18 +66,18 @@ export async function GET(
             },
             createdAt: image.createdAt,
             updatedAt: image.updatedAt
-        }))
+        }
 
-        const response = NextResponse.json(formattedImages)
+        const apiResponse = NextResponse.json(response)
         
         // Add rate limit headers
-        response.headers.set('X-RateLimit-Limit', '1000')
-        response.headers.set('X-RateLimit-Remaining', '999')
-        response.headers.set('X-RateLimit-Reset', new Date(Date.now() + 3600000).toISOString())
+        apiResponse.headers.set('X-RateLimit-Limit', '1000')
+        apiResponse.headers.set('X-RateLimit-Remaining', '999')
+        apiResponse.headers.set('X-RateLimit-Reset', new Date(Date.now() + 3600000).toISOString())
         
-        return response
+        return apiResponse
     } catch (error) {
-        console.log('[IMAGES_GET]', error)
+        console.log('[IMAGE_GET]', error)
         return new NextResponse("Internal error", { status: 500 })
     }
 }

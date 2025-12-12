@@ -43,12 +43,34 @@ export const getFirstSite = async () => {
   const userId = session?.user?.id;
 
   if (!userId) {
-    return;
+    return null;
   }
 
   const site = await prisma.site.findFirst({
     where: {
-      
+      userId,
     }
-  })
+  });
+
+  return site;
+}
+
+export const getUserSites = async () => {
+  const session = await auth();
+  const userId = session?.user?.id;
+
+  if (!userId) {
+    return [];
+  }
+
+  const sites = await prisma.site.findMany({
+    where: {
+      userId,
+    },
+    orderBy: {
+      createdAt: 'asc'
+    }
+  });
+
+  return sites;
 }

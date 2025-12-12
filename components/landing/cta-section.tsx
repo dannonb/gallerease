@@ -21,44 +21,44 @@ export default function CTASection() {
                 <Sparkles className="w-4 h-4 mr-2" />
                 Ready to Get Started?
               </div>
-              <h2 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
                 Start building better galleries today
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Join thousands of developers who trust Gallerease for their image management needs. 
                 Get started for free and scale as you grow.
               </p>
             </div>
 
             {/* Features Highlight */}
-            <div className="grid md:grid-cols-3 gap-6 mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <div className="flex items-center justify-center space-x-3 p-4 rounded-2xl bg-muted/30">
-                <div className="w-10 h-10 bg-gradient-to-br from-slate-600 to-slate-800 rounded-xl flex items-center justify-center text-white">
-                  <Zap className="w-5 h-5" />
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <div className="flex items-center justify-center space-x-3 p-3 sm:p-4 rounded-2xl bg-muted/30">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-slate-600 to-slate-800 rounded-xl flex items-center justify-center text-white">
+                  <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div className="text-left">
-                  <div className="font-semibold">Free to Start</div>
-                  <div className="text-sm text-muted-foreground">No credit card required</div>
+                  <div className="font-semibold text-sm sm:text-base">Free to Start</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">No credit card required</div>
                 </div>
               </div>
               
-              <div className="flex items-center justify-center space-x-3 p-4 rounded-2xl bg-muted/30">
-                <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white">
-                  <Shield className="w-5 h-5" />
+              <div className="flex items-center justify-center space-x-3 p-3 sm:p-4 rounded-2xl bg-muted/30">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white">
+                  <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div className="text-left">
-                  <div className="font-semibold">Enterprise Security</div>
-                  <div className="text-sm text-muted-foreground">AWS S3 & CloudFront</div>
+                  <div className="font-semibold text-sm sm:text-base">Enterprise Security</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">AWS S3 & CloudFront</div>
                 </div>
               </div>
               
-              <div className="flex items-center justify-center space-x-3 p-4 rounded-2xl bg-muted/30">
-                <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center text-white">
-                  <Sparkles className="w-5 h-5" />
+              <div className="flex items-center justify-center space-x-3 p-3 sm:p-4 rounded-2xl bg-muted/30 sm:col-span-2 md:col-span-1">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center text-white">
+                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div className="text-left">
-                  <div className="font-semibold">Developer First</div>
-                  <div className="text-sm text-muted-foreground">Built by developers</div>
+                  <div className="font-semibold text-sm sm:text-base">Developer First</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">Built by developers</div>
                 </div>
               </div>
             </div>

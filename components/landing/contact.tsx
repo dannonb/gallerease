@@ -12,20 +12,20 @@ export default function Contact() {
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
             💬 Get in Touch
           </div>
-          <h1 className="mb-6 text-5xl lg:text-6xl tracking-tight font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h1 className="mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             Contact Us
           </h1>
-          <p className="mb-8 text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+          <p className="mb-8 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
             Got a technical issue? Want to send feedback about a feature? Need details about our plans? We&apos;d love to hear from you.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Contact Form */}
           <div className="animate-slide-up">
-            <div className="bg-card/50 backdrop-blur-sm rounded-3xl border p-8 shadow-soft">
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold mb-4">Send us a message</h2>
+            <div className="bg-card/50 backdrop-blur-sm rounded-3xl border p-4 sm:p-6 lg:p-8 shadow-soft">
+              <div className="mb-6 lg:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4">Send us a message</h2>
                 <p className="text-muted-foreground">
                   Fill out the form below and we&apos;ll get back to you as soon as possible.
                 </p>
@@ -37,8 +37,8 @@ export default function Contact() {
           {/* Contact Info & Social Links */}
           <div className="space-y-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             {/* Quick Contact Options */}
-            <div className="bg-card/50 backdrop-blur-sm rounded-3xl border p-8 shadow-soft">
-              <h3 className="text-2xl font-bold mb-6">Other ways to reach us</h3>
+            <div className="bg-card/50 backdrop-blur-sm rounded-3xl border p-4 sm:p-6 lg:p-8 shadow-soft">
+              <h3 className="text-xl sm:text-2xl font-bold mb-6">Other ways to reach us</h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-4 p-4 rounded-2xl bg-muted/30 hover:bg-muted/50 transition-colors">
                   <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white">

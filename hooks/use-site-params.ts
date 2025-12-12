@@ -14,7 +14,7 @@ export const useSiteParams = create<SiteParams>()(
         }),
         {
           name: 'last-active-site', // name of the item in the storage (must be unique)
-          storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+          storage: createJSONStorage(() => localStorage), // Use localStorage for persistence across sessions
         },
       )
 )
