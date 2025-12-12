@@ -106,7 +106,7 @@ export default function HowItWorks() {
                   
                   {/* API Code Preview */}
                   <div className="bg-slate-900 rounded-xl p-4 text-green-400 font-mono text-sm">
-                    <div className="text-slate-400 mb-2">// API Integration</div>
+                    <div className="text-slate-400 mb-2">{/* API Integration */}</div>
                     <div>GET /api/galleries/123/images</div>
                     <div className="text-slate-500">→ Returns optimized image URLs</div>
                   </div>

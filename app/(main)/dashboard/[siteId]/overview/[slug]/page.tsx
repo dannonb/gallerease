@@ -1,5 +1,9 @@
-import { getComponentBySlug } from "@/lib/utils";
 import OverviewProvider from "@/providers/overview-provider";
+import UploadPage from "@/components/dashboard/overview/upload";
+import ImagesPage from "@/components/dashboard/overview/images";
+import GalleriesPage from "@/components/dashboard/overview/galleries";
+import Stats from "@/components/dashboard/overview/stats";
+import NotFoundPage from "@/components/dashboard/not-found";
 
 import prisma from "@/lib/prisma";
 import { auth } from "@/auth";
@@ -33,12 +37,24 @@ export default async function Overview({
     }
   });
 
+  const renderComponent = () => {
+    switch (params.slug) {
+      case "upload":
+        return <UploadPage />;
+      case "images":
+        return <ImagesPage />;
+      case "galleries":
+        return <GalleriesPage />;
+      case "stats":
+        return <Stats params={params} />;
+      default:
+        return <NotFoundPage />;
+    }
+  };
+
   return (
     <OverviewProvider images={images} galleries={galleries}>
-      {React.cloneElement(
-            getComponentBySlug(params.slug),
-            { params, session }
-        )}
+      {renderComponent()}
     </OverviewProvider>
   );
 }

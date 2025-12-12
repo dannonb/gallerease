@@ -325,7 +325,7 @@ console.log(data);`}
             </div>
             <div className="flex items-center space-x-3">
               <Badge variant="destructive">404</Badge>
-              <span className="text-sm">Not Found - Resource doesn't exist</span>
+              <span className="text-sm">Not Found - Resource doesn&apos;t exist</span>
             </div>
             <div className="flex items-center space-x-3">
               <Badge variant="destructive">429</Badge>

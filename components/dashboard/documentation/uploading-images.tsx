@@ -354,7 +354,7 @@ export default function UploadingImagesDocs({
                       Describe the image for accessibility and SEO purposes.
                     </p>
                     <div className="text-xs text-muted-foreground bg-muted/50 p-2 rounded font-mono">
-                      Example: "Modern living room with blue sofa and wooden coffee table"
+                      Example: &quot;Modern living room with blue sofa and wooden coffee table&quot;
                     </div>
                   </div>
                   
@@ -364,7 +364,7 @@ export default function UploadingImagesDocs({
                       Provide additional context or details about the image.
                     </p>
                     <div className="text-xs text-muted-foreground bg-muted/50 p-2 rounded font-mono">
-                      Example: "Interior design showcase featuring contemporary furniture and natural lighting"
+                      Example: &quot;Interior design showcase featuring contemporary furniture and natural lighting&quot;
                     </div>
                   </div>
                   
@@ -374,7 +374,7 @@ export default function UploadingImagesDocs({
                       Add a URL to make the image clickable in your gallery.
                     </p>
                     <div className="text-xs text-muted-foreground bg-muted/50 p-2 rounded font-mono">
-                      Example: "https://example.com/product-page"
+                      Example: &quot;https://example.com/product-page&quot;
                     </div>
                   </div>
                 </div>
@@ -398,7 +398,7 @@ export default function UploadingImagesDocs({
               </p>
               
               <div className="space-y-3">
-                <h4 className="font-medium">Before clicking "Upload Images":</h4>
+                <h4 className="font-medium">Before clicking &quot;Upload Images&quot;:</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4 text-green-500" />

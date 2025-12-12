@@ -190,7 +190,7 @@ export default async function GeneralSiteSettingsPage({
           <div className="space-y-2">
             <label className="text-sm font-medium">Description</label>
             <Textarea 
-              defaultValue={site.description || ""} 
+              defaultValue="" 
               placeholder="Describe your site or project"
               className="bg-background/50 min-h-[100px]"
             />
@@ -283,14 +283,14 @@ export default async function GeneralSiteSettingsPage({
                     <div className="font-medium text-sm">Auto-optimize images</div>
                     <div className="text-xs text-muted-foreground">Automatically compress and optimize uploaded images</div>
                   </div>
-                  <Badge variant="success">Enabled</Badge>
+                  <Badge variant="default">Enabled</Badge>
                 </div>
                 <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
                   <div>
                     <div className="font-medium text-sm">Generate WebP variants</div>
                     <div className="text-xs text-muted-foreground">Create WebP versions for better performance</div>
                   </div>
-                  <Badge variant="success">Enabled</Badge>
+                  <Badge variant="default">Enabled</Badge>
                 </div>
               </div>
             </div>
@@ -310,7 +310,7 @@ export default async function GeneralSiteSettingsPage({
                     <div className="font-medium text-sm">Rate Limiting</div>
                     <div className="text-xs text-muted-foreground">Prevent API abuse with rate limits</div>
                   </div>
-                  <Badge variant="success">Active</Badge>
+                  <Badge variant="default">Active</Badge>
                 </div>
               </div>
             </div>

@@ -16,7 +16,7 @@ export default function Contact() {
             Contact Us
           </h1>
           <p className="mb-8 text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            Got a technical issue? Want to send feedback about a feature? Need details about our plans? We'd love to hear from you.
+            Got a technical issue? Want to send feedback about a feature? Need details about our plans? We&apos;d love to hear from you.
           </p>
         </div>
 
@@ -27,7 +27,7 @@ export default function Contact() {
               <div className="mb-8">
                 <h2 className="text-3xl font-bold mb-4">Send us a message</h2>
                 <p className="text-muted-foreground">
-                  Fill out the form below and we'll get back to you as soon as possible.
+                  Fill out the form below and we&apos;ll get back to you as soon as possible.
                 </p>
               </div>
               <ContactForm />

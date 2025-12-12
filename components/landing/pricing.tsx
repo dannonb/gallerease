@@ -135,7 +135,7 @@ export default async function Pricing() {
         <div className="mt-20 text-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <h3 className="text-2xl font-bold mb-4">Questions?</h3>
           <p className="text-muted-foreground mb-6">
-            Need help choosing the right plan? We're here to help.
+            Need help choosing the right plan? We&apos;re here to help.
           </p>
           <Button variant="outline" size="lg">
             Contact Sales

@@ -56,7 +56,7 @@ export default function AccessPage() {
 
   const StatusBadge = ({ status }: { status: string }) => {
     const variants = {
-      active: { variant: "success" as const, text: "Active" },
+      active: { variant: "default" as const, text: "Active" },
       development: { variant: "secondary" as const, text: "Development" },
       expired: { variant: "destructive" as const, text: "Expired" }
     };

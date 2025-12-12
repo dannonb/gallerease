@@ -83,7 +83,7 @@ export default async function APIKeysPage({
               <Shield className="w-5 h-5" />
               <span>API Key Status</span>
             </div>
-            <Badge variant={key ? "success" : "secondary"}>
+            <Badge variant={key ? "default" : "secondary"}>
               {key ? "Active" : "No Key"}
             </Badge>
           </CardTitle>
@@ -142,7 +142,7 @@ export default async function APIKeysPage({
             </div>
             
             <div className="space-y-3">
-              <h4 className="font-medium text-red-600">❌ Don't</h4>
+              <h4 className="font-medium text-red-600">❌ Don&apos;t</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>• Commit API keys to version control</li>
                 <li>• Share keys in public forums or chat</li>
@@ -169,7 +169,7 @@ export default async function APIKeysPage({
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-muted-foreground">
-            Here's how to use your API key in different environments:
+            Here&apos;s how to use your API key in different environments:
           </p>
 
           <div className="space-y-4">

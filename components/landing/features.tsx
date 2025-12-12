@@ -82,7 +82,7 @@ export default function Features() {
             Everything you need for gallery management
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            From upload to delivery, we've built every feature with developers and their clients in mind.
+            From upload to delivery, we&apos;ve built every feature with developers and their clients in mind.
           </p>
         </div>
 

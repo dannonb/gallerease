@@ -44,7 +44,7 @@ export default async function Home() {
           {/* Cascading Grid Animation */}
           <div className="absolute inset-0 grid-cascade-container">
             {Array.from({ length: 25 }, (_, row) => (
-              <div key={row} className="grid-row" style={{ '--row': row }}>
+              <div key={row} className="grid-row" style={{ '--row': row } as React.CSSProperties}>
                 {Array.from({ length: 40 }, (_, col) => (
                   <div 
                     key={col} 
@@ -52,7 +52,7 @@ export default async function Home() {
                     style={{ 
                       '--col': col,
                       '--delay': `${(row + col) * 0.08}s`
-                    }}
+                    } as React.CSSProperties}
                   />
                 ))}
               </div>

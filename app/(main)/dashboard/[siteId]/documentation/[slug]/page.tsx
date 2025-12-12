@@ -37,7 +37,8 @@ export default async function Documentation({
   }
 
   // Get API key
-  const apiKey = await getApiKey(siteId);
+  const apiKeyResult = await getApiKey(siteId);
+  const apiKey = apiKeyResult || null;
 
   const componentProps = {
     params,

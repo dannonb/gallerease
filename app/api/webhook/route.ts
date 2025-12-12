@@ -1,4 +1,3 @@
-import { stripe } from "@/lib/stripe";
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import Stripe from 'stripe'
@@ -8,12 +7,20 @@ export async function POST(req: Request) {
   const body = await req.text();
   const signature = headers().get("Stripe-Signature");
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
   if (!webhookSecret)
     return new NextResponse("Missing Webhook Secret", { status: 500 });
 
   if (!signature)
     return new NextResponse("Missing Stripe Signature", { status: 400 });
+
+  if (!stripeSecretKey)
+    return new NextResponse("Missing Stripe Secret Key", { status: 500 });
+
+  const stripe = new Stripe(stripeSecretKey, {
+    typescript: true,
+  });
 
   let event: Stripe.Event | null = null;
 

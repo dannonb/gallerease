@@ -107,7 +107,7 @@ export default function SupportPage() {
 
   const StatusBadge = ({ status }: { status: string }) => {
     const variants = {
-      online: { variant: "success" as const, text: "Online" },
+      online: { variant: "default" as const, text: "Online" },
       available: { variant: "secondary" as const, text: "Available" },
       offline: { variant: "destructive" as const, text: "Offline" }
     };
@@ -206,7 +206,7 @@ export default function SupportPage() {
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="space-y-4">
               <p className="text-muted-foreground">
-                Can't find what you're looking for? Send us a detailed message and we'll get back to you as soon as possible.
+                Can&apos;t find what you&apos;re looking for? Send us a detailed message and we&apos;ll get back to you as soon as possible.
               </p>
               
               <div className="space-y-3">
